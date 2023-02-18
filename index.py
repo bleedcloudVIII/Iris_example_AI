@@ -53,7 +53,6 @@ from sklearn import datasets
 iris = datasets.load_iris()
 #                       ?Чтобы были строки?
 dataset = [(iris.data[i][None, ...], iris.target[i]) for i in range(len(iris.target))]
-
 # INPUT_DIM*H_DIM - матрица
 W1 = np.random.randn(INPUT_DIM, H_DIM) 
 b1 = np.random.randn(1, H_DIM)
@@ -132,9 +131,20 @@ def calc_accuracy():
     return acc
 
 accuracy = calc_accuracy()
-print("Accuracy: ", accuracy)
+# print("Accuracy: ", accuracy)
 
-# График подения ошибки
+x1 = input()
+x2 = input()
+x3 = input()
+x4 = input()
+x_input = np.array([float(x1), float(x2), float(x3), float(x4)])
+
+probs = predict(x_input)
+pred_class = np.argmax(probs)
+class_names = ['Setosa', 'Versicolor', 'Virginica']
+print('Predicted class: ', class_names[pred_class])
+
+# График падения ошибки
 # import matplotlib.pyplot as plt 
 # plt.plot(loss_arr)
 # plt.show()
